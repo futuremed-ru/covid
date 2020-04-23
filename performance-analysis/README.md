@@ -34,7 +34,7 @@ Does it mean that COVID-19 can be distinguished from other similar looking patho
 ### Proprietary dataset
 
 To answer the posed question, let's have a look at the classifier's performance on *unseen* data.  
-Used dataset has only "normal" and "abnormal" labels. There's no COVID-19 positive patient images in thit dataset.  
+Used dataset has only "normal" and "abnormal" labels. There's no COVID-19 positive patient images in this dataset.  
 
 | Label    | Predicted "COVID-19" count | Predicted "Other" count | Total |
 | -------- | -------------------------: | ----------------------: | ----: |
