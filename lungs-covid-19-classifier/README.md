@@ -4,7 +4,7 @@ Training code for lungs classification on two classes: "COVID-19" and "Other".
 Used framework: [PyTorch](https://pytorch.org/).
 
 ## Data
-Dataset is meant to has two classes: COVID-19 and Other.
+Dataset is meant to has two classes: "COVID-19" and "Other".
 It was created by combining samples from four sources:
 1. [The famous github repo](https://github.com/ieee8023/covid-chestxray-dataset) with COVID-19 images. 
 2. Images from [Italian database](https://www.sirm.org/category/senza-categoria/covid-19/) with COVID-19 cases.
