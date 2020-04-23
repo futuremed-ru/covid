@@ -13,12 +13,12 @@ It was created by combining samples from four sources:
 
 To get images with COVID-19 the following was done:  
 Most of the images from Italian database had been already included into the github repo. But some of them didn't.  
-So after combining first two sources we got the all available at the moment (7 April 2020) images with COVID-19 and couple images without it (with other pathology or "no finding", they had been used as "Other" class samples).  
+So after combining first two sources we got all available at the moment (7 April 2020) images with COVID-19 and couple images without it (with other pathology or "no finding", they had been used as "Other" class samples).  
 One patient can have multiple images in that part of the dataset.
 
 To get more images for "Other" class the following was done:
 * Randomly picked 450 images from chest X-ray pneumonia dataset in a ballanced manner.  
-Patiend IDs were not taken into account while picking iamges for that part of the dataset.  
+Patient IDs were not taken into account while picking images for that part of the dataset.  
 Totaly were picked:  
 150 images of 149 patients with no finding,  
 150 images of 144 patients with viral pneumonia,  
@@ -26,7 +26,7 @@ Totaly were picked:
 * Randomly picked 450 images from NIH ChestXRay-14 dataset:  
 30 images with every of 14 pathologies and another 30 images with "no finding" label.  
 Images with one target pathology may contain other pathologies as well.  
-So this part of the dataset is *almost* ballanced.  
+So this part of the dataset is almost ballanced.  
 The images were picked in a way, that sub-dataset may contain only one image of a certain patient.
 In other words we had 450 unique patient images.
 
@@ -43,7 +43,7 @@ Mean and standard deviation were calculated for the images in the dataset.
 
 ## Training
 DenseNet-121 was choosed as a backbone for the model. We used pretrained on ChestXRay-14 model for weight initialization.  
-Working with medical images it's absolutely crucial to make sure that different images of one patient won't get into training/validation/test sets.  
+Working with medical images it's crucial to make sure that different images of one patient won't get into training/validation/test sets.  
 To address this issue and due to the scarsity of COVID-19 images, 10-fold cross-validation over *patients* was used for training.  
 Data augmentations used for training:
 * Random rotate (<15°),
@@ -59,7 +59,7 @@ The network was trained using Adam optimizer with asmgrad. Other hyperparemeters
 Best on validation set by ROC AUC model was saved for each fold.  
 
 ## Results
-Network's predictions was obrained as argmax for produced scores for each class ("COVID-19" and "Other").  
+Network's predictions was obtained as argmax for produced scores for each class ("COVID-19" and "Other").  
 Resulting models formed an ensemble which is used for further analisys.
 Models stats:  
 
@@ -79,7 +79,7 @@ Models stats:
 
 For testing were used new frontal (PA or AP views) X-ray images from the github repo (the ones that were added from 7 to 22 April 2020).  
 And required to ballance ("COVID-19" and "Other") classes number of images were added from unused in training patient's images randomly picked from ChestXRay-14 (as they was picked randomly, statistically most of them were with "no finding" label).  
-All that images with corresponding labels form test set.  
+All these images with corresponding labels form a test set.  
 Per label stats on the test set are in tables below.  
 
 | Label              | Predicted "COVID-19" count | Predicted "Other" count | Total |
