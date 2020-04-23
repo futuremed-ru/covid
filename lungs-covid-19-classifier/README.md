@@ -109,4 +109,4 @@ Common metrics for resulting "COVID-19" ensemble classifier:
 | Specificity             | 0.92647 |
 | F1 score                | 0.91045 |
 
-If this results convinced you that here we have a good Chest X-ray COVID-19 classifier, check out [this folder](https://github.com/futuremed-ru/covid/tree/master/performance-analysis) with deeper analisys of the classifier's performance.
+If these results convinced you that here we have a good Chest X-ray COVID-19 classifier, check out [this folder](https://github.com/futuremed-ru/covid/tree/master/performance-analysis) with deeper analisys of the classifier's performance.
