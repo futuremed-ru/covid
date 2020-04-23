@@ -1,9 +1,9 @@
 # Lungs COVID-19 Classifier Analysis
 
-This repo contains code and description for performance analysis of [this COVID-19 classifier](https://github.com/futuremed-ru/covid/tree/master/lungs-covid-19-classifier).
+This folder contains code and description for performance analysis of [this COVID-19 classifier](https://github.com/futuremed-ru/covid/tree/master/lungs-covid-19-classifier).
 
 ## Performance analysis
-In the repo above you can see very good performance metrics. Let's find out if they really indicative.
+In the repo above you can see very good performance metrics. Let's find out if they are really indicative.
 
 ### ChestXRay-14
 First, let's look at classifier's performance stats on the rest (unused in training) of [ChestXRay-14](https://www.kaggle.com/nih-chest-xrays/data) dataset:
@@ -33,7 +33,7 @@ Does it mean that COVID-19 can be distinguished from other similar looking patho
 
 ### Proprietary dataset
 
-To answer the posed question, let's have a look at the classifier's performance on *unseen* data.  
+Now let's have a look at the classifier's performance on *unseen* data.  
 Used dataset has only "normal" and "abnormal" labels. There's no COVID-19 positive patient images in this dataset.  
 
 | Label    | Predicted "COVID-19" count | Predicted "Other" count | Total |
@@ -47,7 +47,7 @@ Specificity drops down significantly (to 0.69333). The classifier doesn't seems 
 ### "New github" dataset
 
 Results on new images (7-22 Apr 2020) from [github repo with COVID-19 cases](https://github.com/ieee8023/covid-chestxray-dataset).
-Part of the table from [the classifier's repo](https://gitlab.com/futuremed/lungs-covid-19).
+Part of the table from [the classifier's folder](https://github.com/futuremed-ru/covid/tree/master/lungs-covid-19-classifier).
 
 | Label              | Predicted "COVID-19" count | Predicted "Other" count | Total |
 | ------------------ | -------------------------: | ----------------------: | ----: |
@@ -71,23 +71,23 @@ Common metrics:
 
 | Metric                  | Value | Comment |
 | ----------------------- | ----: | :------ |
-| Accuracy                | 0.96947 | Classes are heavily unballanced, not indicative |
+| Accuracy                | 0.96947 | Classes are heavily unbalanced, not indicative |
 | Precision               | 0.02141 | Here it is, the classifier doesn't really know how COVID-19 is look like |
-| Recall (Sensitivity)    | 0.89706 | Heavily affected by ChestXRay-14 results, not indicative |
+| Recall (Sensitivity)    | 0.89706 | Based only on COVID-19 dataset results, not indicative |
 | Specificity             | 0.96952 | Heavily affected by ChestXRay-14 results, not indicative |
 | F1 score                | 0.04182 | Harmonic mean of precision and recall, indicative |
 
 ## Discussion
 
 Now lets speak about intuition behind all these results.  
-As it was mentioned, resulting precision shows, that the classifier doesn't able to distinguish COVID-19 spsecific patterns in the X-ray images (in fact, that there's nothing *specific* to COVID-19 manifestations in X-ray images).  
+As it was mentioned, resulting precision shows, that the classifier doesn't able to distinguish COVID-19 spsecific patterns in the images (in fact, there's nothing *specific* to COVID-19 manifestations in chest X-ray images).  
 But what does the classifier learned then, and why it performs well on github repo and ChestXRay-14 data?  
 The classifier learned how images from datasets picked for "Other" class look like.  
 And it also learned that any pathological pattern or things like *arrows on images* means it's "COVID-19", *given that the image doesn't look like it's from "Other" datasets.*  
 So, generaly, the classifier learned to distinguish *something pathological and not looking like "Other" images*.  
 
-That's why it marked almost every third image as COVID-19 on our proprietary dataset (containing images that doesn't look similar to "Other" images).  
-The classifier knows *some* difference between normal and abnormal images though. It marked as COVID-19 every 3rd abnormal and every 5th normal image.  
+That's why it marked almost every third image as "COVID-19" on our proprietary dataset (containing images that doesn't look similar to "Other" images).  
+The classifier knows *some* difference between normal and abnormal images though. It marked as "COVID-19" every 3rd abnormal and every 5th normal image.  
 
 Despite strong data augmentation while training, careful patient-wise k-fold cross-validation and weighted loss function, the classifier failed to perform well.  
 
@@ -98,7 +98,7 @@ Actually you don't need any proprietary data, you may just exclude one dataset f
 
 We'd like to point out two main consequences:
 * Any nural network will always try to find *the easiest way* to solve the task.
-* Look closely to the data on which the model performance is showed. Not bare numbers.
+* Look closely to the data on which the model performance is demonstrated. Not bare numbers.
 
 
 
