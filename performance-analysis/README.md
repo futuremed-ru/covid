@@ -1,6 +1,6 @@
 # Lungs COVID-19 Classifier Analysis
 
-This repo contains code and description for performance analysis of [this COVID-19 classifier](https://gitlab.com/futuremed/lungs-covid-19).
+This repo contains code and description for performance analysis of [this COVID-19 classifier](https://github.com/futuremed-ru/covid/tree/master/lungs-covid-19-classifier).
 
 ## Performance analysis
 In the repo above you can see very good performance metrics. Let's find out if they really indicative.
