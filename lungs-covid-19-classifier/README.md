@@ -1,4 +1,4 @@
-# Lungs COVID-19
+# Lungs COVID-19 Classifier
 
 Training code for lungs classification on two classes: COVID-19 and Other.
 Used framework: [PyTorch](https://pytorch.org/).
@@ -7,12 +7,12 @@ Used framework: [PyTorch](https://pytorch.org/).
 Dataset is meant to has two classes: COVID-19 and Other.
 It was created by combining samples from four sources:
 1. [The famous github repo](https://github.com/ieee8023/covid-chestxray-dataset) with COVID-19 images. 
-2. Images from [Italian cite](https://www.sirm.org/category/senza-categoria/covid-19/) with COVID-19 cases.
+2. Images from [Italian database](https://www.sirm.org/category/senza-categoria/covid-19/) with COVID-19 cases.
 3. Kaggle [chest X-ray pneumonia dataset](https://www.kaggle.com/paultimothymooney/chest-xray-pneumonia).
 4. [NIH ChestXRay-14 dataset](https://www.kaggle.com/nih-chest-xrays/data).
 
 To get images with COVID-19 the following was done:  
-Most of the images from Italian cite had been already included into the github repo. But some of them didn't.  
+Most of the images from Italian database had been already included into the github repo. But some of them didn't.  
 So after combining first two sources we got the all available at the moment (7 April 2020) images with COVID-19 and couple images without it (with other pathology or "no finding", they had been used as "Other" class samples).  
 One patient can have multiple images in that part of the dataset.
 
@@ -109,4 +109,4 @@ Common metrics for resulting "COVID-19" ensemble classifier:
 | Specificity             | 0.92647 |
 | F1 score                | 0.91045 |
 
-If this results convinced you that here we have a good Chest X-ray COVID-19 classifier, check out [this repo](https://gitlab.com/futuremed/covid-pneumonia-comparison) with deeper analisys of the classifier's performance.
+If this results convinced you that here we have a good Chest X-ray COVID-19 classifier, check out [this folder](https://github.com/futuremed-ru/covid/tree/master/performance-analysis) with deeper analisys of the classifier's performance.
