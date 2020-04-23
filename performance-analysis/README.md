@@ -97,7 +97,7 @@ Actually you don't need any proprietary data, you may just exclude one dataset f
 ## Takeaways
 
 We'd like to point out two main consequences:
-* Any nural netrowk will always try to find *the easiest way* to solve the task.
+* Any nural network will always try to find *the easiest way* to solve the task.
 * Look closely to the data on which the model performance is showed. Not bare numbers.
 
 
