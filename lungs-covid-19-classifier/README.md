@@ -1,6 +1,6 @@
 # Lungs COVID-19 Classifier
 
-Training code for lungs classification on two classes: COVID-19 and Other.
+Training code for lungs classification on two classes: "COVID-19" and "Other".  
 Used framework: [PyTorch](https://pytorch.org/).
 
 ## Data
