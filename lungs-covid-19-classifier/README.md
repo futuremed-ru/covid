@@ -17,20 +17,20 @@ So after combining first two sources we got all available at the moment (7 April
 One patient can have multiple images in that part of the dataset.
 
 To get more images for "Other" class the following was done:
-* Randomly picked 450 images from chest X-ray pneumonia dataset in a ballanced manner.  
+* Randomly picked 450 images from chest X-ray pneumonia dataset in a balanced way.  
 Patient IDs were not taken into account while picking images for that part of the dataset.  
-Totaly were picked:  
+Totally were picked:  
 150 images of 149 patients with no finding,  
 150 images of 144 patients with viral pneumonia,  
 150 images of 144 patients with bacterial pneumonia.  
 * Randomly picked 450 images from NIH ChestXRay-14 dataset:  
 30 images with every of 14 pathologies and another 30 images with "no finding" label.  
 Images with one target pathology may contain other pathologies as well.  
-So this part of the dataset is almost ballanced.  
+So this part of the dataset is almost balanced.  
 The images were picked in a way, that sub-dataset may contain only one image of a certain patient.
 In other words we had 450 unique patient images.
 
-Next, we combined all the data. And resulting dataset stats were following:
+Next, we joined all the data. And resulting dataset stats were following:
 
 | Label         | Images count | Patients count |
 | ------------- |-------------:| --------------:|
@@ -42,9 +42,9 @@ All the images were resized to 564x564.
 Mean and standard deviation were calculated for the images in the dataset.
 
 ## Training
-DenseNet-121 was choosed as a backbone for the model. We used pretrained on ChestXRay-14 model for weight initialization.  
+DenseNet-121 was choosen as a backbone for the model. We used pretrained on ChestXRay-14 model for weight initialization.  
 Working with medical images it's crucial to make sure that different images of one patient won't get into training/validation/test sets.  
-To address this issue and due to the scarsity of COVID-19 images, 10-fold cross-validation over *patients* was used for training.  
+To address this issue and due to the scarcity of COVID-19 images, 10-fold cross-validation over *patients* was used for training.  
 Data augmentations used for training:
 * Random rotate (<15°),
 * Random crop (512x512),
@@ -54,13 +54,13 @@ Center crops used for evaluation.
 Calculated mean and std were used to standardize images after augmentation.  
 The network was modified to produce two logits for the classes ("COVID-19" and "Other").
 Weighted binary cross-entropy used as the loss function.
-As we cross-validate over *patients*, the number of images for each of the two classes changes from one fold to another, so we calculated perclass weights for every fold on the fly.  
-The network was trained using Adam optimizer with asmgrad. Other hyperparemeters can be found in `config.py` file.
+As we cross-validate over *patients*, the number of images for each of the two classes changes from one fold to another, so we calculated per class weights for every fold on the fly.  
+The network was trained using Adam optimizer with asmgrad. Other hyperparameters can be found in `config.py` file.
 Best on validation set by ROC AUC model was saved for each fold.  
 
 ## Results
 Network's predictions was obtained as argmax for produced scores for each class ("COVID-19" and "Other").  
-Resulting models formed an ensemble which is used for further analisys.
+Resulting models formed an ensemble which is used for further analysis.
 Models stats:  
 
 | Fold # | Val AUC | Val Acc |
@@ -78,7 +78,7 @@ Models stats:
 |   Mean | 0.99387 | 0.95046 |
 
 For testing were used new frontal (PA or AP views) X-ray images from the github repo (the ones that were added from 7 to 22 April 2020).  
-And required to ballance ("COVID-19" and "Other") classes number of images were added from unused in training patient's images randomly picked from ChestXRay-14 (as they was picked randomly, statistically most of them were with "no finding" label).  
+And required to balance ("COVID-19" and "Other") classes number of images were added from unused in training patient's images randomly picked from ChestXRay-14 (as they was picked randomly, statistically most of them were with "no finding" label).  
 All these images with corresponding labels form a test set.  
 Per label stats on the test set are in tables below.  
 
@@ -109,4 +109,4 @@ Common metrics for resulting "COVID-19" ensemble classifier:
 | Specificity             | 0.92647 |
 | F1 score                | 0.91045 |
 
-If these results convinced you that here we have a good Chest X-ray COVID-19 classifier, check out [this folder](https://github.com/futuremed-ru/covid/tree/master/performance-analysis) with deeper analisys of the classifier's performance.
+If these results convinced you that here we have a good Chest X-ray COVID-19 classifier, check out [this folder](https://github.com/futuremed-ru/covid/tree/master/performance-analysis) with deeper analysis of the classifier's performance.
