@@ -30,7 +30,7 @@ So this part of the dataset is almost balanced.
 The images were picked in a way, that sub-dataset may contain only one image of a certain patient.
 In other words we had 450 unique patient images.
 
-Next, we joined all the data. And resulting dataset stats were following:
+Next, we combined all the data. And resulting dataset stats were following:
 
 | Label         | Images count | Patients count |
 | ------------- |-------------:| --------------:|
