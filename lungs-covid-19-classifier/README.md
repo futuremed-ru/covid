@@ -42,7 +42,7 @@ All the images were resized to 564x564.
 Mean and standard deviation were calculated for the images in the dataset.
 
 ## Training
-DenseNet-121 was choosen as a backbone for the model. We used pretrained on ChestXRay-14 model for weight initialization.  
+DenseNet-121 was chosen as a backbone for the model. We used pretrained on ChestXRay-14 model for weight initialization.  
 Working with medical images it's crucial to make sure that different images of one patient won't get into training/validation/test sets.  
 To address this issue and due to the scarcity of COVID-19 images, 10-fold cross-validation over *patients* was used for training.  
 Data augmentations used for training:
