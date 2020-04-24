@@ -42,7 +42,7 @@ Used dataset has only "normal" and "abnormal" labels. There's no COVID-19 positi
 | Abnormal | 2379 | 5167 | 7546 |
 | Total    | 2469 | 5582 | 8051 |
 
-Specificity drops down significantly (to 0.69333). The classifier doesn't seems to be so good now. What happend?
+Specificity drops down significantly (to 0.69333). The classifier doesn't seems to be so good now. What happened?
 
 ### "New github" dataset
 
@@ -80,11 +80,11 @@ Common metrics:
 ## Discussion
 
 Now lets speak about intuition behind all these results.  
-As it was mentioned, resulting precision shows, that the classifier doesn't able to distinguish COVID-19 spsecific patterns in the images (in fact, there's nothing *specific* to COVID-19 manifestations in chest X-ray images).  
+As it was mentioned, resulting precision shows, that the classifier doesn't able to distinguish COVID-19 specific patterns in the images (in fact, there's nothing *specific* to COVID-19 manifestations in chest X-ray images).  
 But what does the classifier learned then, and why it performs well on github repo and ChestXRay-14 data?  
 The classifier learned how images from datasets picked for "Other" class look like.  
 And it also learned that any pathological pattern or things like *arrows on images* means it's "COVID-19", *given that the image doesn't look like it's from "Other" datasets.*  
-So, generaly, the classifier learned to distinguish *something pathological and not looking like "Other" images*.  
+So, generally, the classifier learned to distinguish *something pathological and not looking like "Other" images*.  
 
 That's why it marked almost every third image as "COVID-19" on our proprietary dataset (containing images that doesn't look similar to "Other" images).  
 The classifier knows *some* difference between normal and abnormal images though. It marked as "COVID-19" every 3rd abnormal and every 5th normal image.  
@@ -97,7 +97,7 @@ Actually you don't need any proprietary data, you may just exclude one dataset f
 ## Takeaways
 
 We'd like to point out two main consequences:
-* Any nural network will always try to find *the easiest way* to solve the task.
+* Any neural network will always try to find *the easiest way* to solve the task.
 * Look closely to the data on which the model performance is demonstrated. Not bare numbers.
 
 
