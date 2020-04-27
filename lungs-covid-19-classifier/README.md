@@ -55,7 +55,7 @@ Calculated mean and std were used to standardize images after augmentation.
 The network was modified to produce two logits for the classes ("COVID-19" and "Other").
 Weighted binary cross-entropy used as the loss function. Soft-labeling was used.
 As we cross-validate over *patients*, the number of images for each of the two classes changes from one fold to another, so we calculated per class weights for every fold on the fly.  
-The network was trained using Adam optimizer with asmgrad. Other hyperparameters can be found in `config.py` file.
+The network was trained using Adam optimizer with amsgrad. Other hyperparameters can be found in `config.py` file.
 Best on validation set by ROC AUC model was saved for each fold.  
 
 ## Results
