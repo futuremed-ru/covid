@@ -1,6 +1,6 @@
 # Lungs COVID-19 Classifier
 
-Training code for lungs classification on two classes: "COVID-19" and "Other".  
+Training code for lungs classification in two classes: "COVID-19" and "Other".  
 Used framework: [PyTorch](https://pytorch.org/).
 
 ## Data
@@ -55,12 +55,12 @@ Calculated mean and std were used to standardize images after augmentation.
 The network was modified to produce two logits for the classes ("COVID-19" and "Other").
 Weighted binary cross-entropy used as the loss function. Soft-labeling was used.
 As we cross-validate over *patients*, the number of images for each of the two classes changes from one fold to another, so we calculated per class weights for every fold on the fly.  
-The network was trained using Adam optimizer with amsgrad. Other hyperparameters can be found in `config.py` file.
-Best on validation set by ROC AUC model was saved for each fold.  
+The network was trained using Adam optimizer with AMSGrad. Other hyperparameters can be found in the `config.py` file.
+Best on the validation set by ROC AUC model was saved for each fold.  
 
 ## Results
-Network's predictions was obtained as argmax for produced scores for each class ("COVID-19" and "Other").  
-Resulting models formed an ensemble which is used for further analysis.
+Network's predictions were obtained as argmax for produced scores for each class ("COVID-19" and "Other").  
+Resulting models formed an ensemble that is used for further analysis.
 Models stats:  
 
 | Fold # | Val AUC | Val Acc |
@@ -77,8 +77,8 @@ Models stats:
 |     10 |     1.0 |     1.0 |
 |   Mean | 0.99387 | 0.95046 |
 
-For testing were used new frontal (PA or AP views) X-ray images from the github repo (the ones that were added from 7 to 22 April 2020).  
-And required to balance ("COVID-19" and "Other") classes number of images were added from unused in training patient's images randomly picked from ChestXRay-14 (as they was picked randomly, statistically most of them were with "no finding" label).  
+For testing were used new frontal (PA or AP views) X-ray images from the GitHub repo (the ones that were added from 7 to 22 April 2020).  
+And required to balance ("COVID-19" and "Other") classes number of images were added from unused in training patient's images randomly picked from ChestXRay-14 (as they were picked randomly, statistically most of them were with "no finding" label).  
 All these images with corresponding labels form a test set.  
 Per label stats on the test set are in tables below.  
 
@@ -109,4 +109,4 @@ Common metrics for resulting "COVID-19" ensemble classifier:
 | Specificity             | 0.92647 |
 | F1 score                | 0.91045 |
 
-If these results convinced you that here we have a good Chest X-ray COVID-19 classifier, check out [this folder](https://github.com/futuremed-ru/covid/tree/master/performance-analysis) with deeper analysis of the classifier's performance.
+If these results convinced you that here we have a good Chest X-ray COVID-19 classifier, check out [this folder](https://github.com/futuremed-ru/covid/tree/master/performance-analysis) with a deeper analysis of the classifier's performance.
