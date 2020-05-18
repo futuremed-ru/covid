@@ -27,14 +27,14 @@ First, let's look at classifier's performance stats on the rest (unused in train
 | No Finding         | 221 | 54659 | 54880 |
 | Total              | 319 | 83110 | 83429 |
 
-Since in that dataset there's no COVID-19 cases, then the only thing we can claim is that our classifier has pretty good specificity (0.99235) *on this dataset*.  
-Also you can see that there's no peak of false positives on such classes as "Pneumonia" and "Infiltration" - the ones which might have similar to COVID-19 X-ray picture.   
+Since in that dataset there are no COVID-19 cases, then the only thing we can claim is that our classifier has pretty good specificity (0.99235) *on this dataset*.  
+Also you can see that there's no peak of false positives on such classes as "Pneumonia" and "Infiltration" - the ones which might have similar to the COVID-19 X-ray picture.   
 Does it mean that COVID-19 can be distinguished from other similar looking pathologies by an AI algorithm? 
 
 ### Proprietary dataset
 
 Now let's have a look at the classifier's performance on *unseen* data.  
-Used dataset has only "normal" and "abnormal" labels. There's no COVID-19 positive patient images in this dataset.  
+The used dataset has only "normal" and "abnormal" labels. There are no COVID-19 positive patient images in this dataset.  
 
 | Label    | Predicted "COVID-19" count | Predicted "Other" count | Total |
 | -------- | -------------------------: | ----------------------: | ----: |
@@ -42,7 +42,7 @@ Used dataset has only "normal" and "abnormal" labels. There's no COVID-19 positi
 | Abnormal | 2379 | 5167 | 7546 |
 | Total    | 2469 | 5582 | 8051 |
 
-Specificity drops down significantly (to 0.69333). The classifier doesn't seems to be so good now. What happened?
+Specificity drops down significantly (to 0.69333). The classifier doesn't seem to be so good now. What happened?
 
 ### "New github" dataset
 
@@ -79,17 +79,17 @@ Common metrics:
 
 ## Discussion
 
-Now lets speak about intuition behind all these results.  
-As it was mentioned, resulting precision shows, that the classifier doesn't able to distinguish COVID-19 specific patterns in the images (in fact, there's nothing *specific* to COVID-19 manifestations in chest X-ray images).  
-But what does the classifier learned then, and why it performs well on github repo and ChestXRay-14 data?  
+Now let’s speak about the intuition behind all these results.  
+As was mentioned, resulting precision shows, that the classifier isn’t able to distinguish COVID-19 specific patterns in the images (in fact, there's nothing *specific* to COVID-19 manifestations in chest X-ray images).  
+But what does the classifier learned then, and why it performs well on GitHub repo and ChestXRay-14 data?  
 The classifier learned how images from datasets picked for "Other" class look like.  
 And it also learned that any pathological pattern or things like *arrows on images* means it's "COVID-19", *given that the image doesn't look like it's from "Other" datasets.*  
 So, generally, the classifier learned to distinguish *something pathological and not looking like "Other" images*.  
 
-That's why it marked almost every third image as "COVID-19" on our proprietary dataset (containing images that doesn't look similar to "Other" images).  
+That's why it marked almost every third image as "COVID-19" on our proprietary dataset (containing images that don’t look similar to "Other" images).  
 The classifier knows *some* difference between normal and abnormal images though. It marked as "COVID-19" every 3rd abnormal and every 5th normal image.  
 
-Despite strong data augmentation while training, careful patient-wise k-fold cross-validation and weighted loss function, the classifier failed to perform well.  
+Despite strong data augmentation while training, careful patient-wise k-fold cross-validation, and weighted loss function, the classifier failed to perform well.  
 
 We encourage anyone interested to reproduce our experiment.  
 Actually you don't need any proprietary data, you may just exclude one dataset from "Other" class, and use it as "unseen".
@@ -98,12 +98,4 @@ Actually you don't need any proprietary data, you may just exclude one dataset f
 
 We'd like to point out two main consequences:
 * Any neural network will always try to find *the easiest way* to solve the task.
-* Look closely to the data on which the model performance is demonstrated. Not bare numbers.
-
-
-
-
-
-
-
-
+* Look closely at the data on which the model performance is demonstrated. Not bare numbers.
